@@ -1,8 +1,9 @@
 class Api::UsersController < ApplicationController
-
+    
     def index
         @users = User.all
-        render json: @users
+        render json: res
+        
     end
 
     def create

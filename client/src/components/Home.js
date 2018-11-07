@@ -24,14 +24,16 @@ export default class Home extends Component {
   };
 
   getPets = async () => {
-    const response = await axios.get('http://api.petfinder.com/pet.find?format=json&key=975abed7430683f27f2e11f386b41692&location={30308}&animal={dog}')
-    return response.data
+  const userId = this.props.match.params.regionId
+  const response = await axios.get(`/api/${userId}/pets`)
+    return response
   }
 
 
 
   componentDidMount = async () => {
     const response = await this.getPets()
+    console.log('response', response)
     //axios
     //set response
 
@@ -61,7 +63,8 @@ export default class Home extends Component {
   render() {
     return (
     <div>
-      {this.state.pets}
+      <h1>Pets</h1>
+      {this.state.pets.name}
     </div>
     )
   }
