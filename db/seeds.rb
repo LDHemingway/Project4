@@ -9,4 +9,8 @@ david = User.create(name: 'David', location: 'San Francisco, CA', image_url: 'da
 
 kato = Pet.create(animal: 'Cat', breed: 'American Short Hair', size: 'Large', sex: 'Male', location: 'Atlanta, GA', age: 'Adult')
 minka = Pet.create(animal: 'Cat', breed: 'American Short Hair', size: 'Large', sex: 'Female', location: 'Atlanta, GA', age: 'Adult')
+milo = Pet.create(animal: 'Dog', breed: 'Labradoodle', size: 'Large', sex: 'Male', location: 'Seattle, WA', age: 'Elder')
 
+favorite = Favorite.create(user: lauren, pet: minka)
+anotherfavorite = Favorite.create(user: ben, pet: minka)
+samsfavorite = Favorite.create(user: sam, pet: milo)
