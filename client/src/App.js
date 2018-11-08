@@ -10,7 +10,7 @@ class App extends Component {
       <Router>
         <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/:userId' component={UserPage} />
+        <Route path='/users/:id' component={UserPage} />
         </Switch>
       </Router>
     );

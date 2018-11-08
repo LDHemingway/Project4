@@ -1,70 +1,45 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 import axios from 'axios'
+import UserPage from "./UserPage";
 
 export default class Home extends Component {
   state = {
-    pets: [
-      {
-        status: "",
-        age: "",
-        size: "",
-        image_url: "",
-        name: "",
-        sex: "",
-        id: "",
-        description: "",
-        animal: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        phone: ""
-      }
-    ]
-  };
-
-  getPets = async () => {
-  const userId = this.props.match.params.regionId
-  const response = await axios.get(`/api/${userId}/pets`)
-    return response
+    users: [{
+      id: '',
+      name: '',
+      location: '',
+      image_url: ''
+    }]
   }
 
-
-
+  getUsers = async () => {
+    const response = await axios.get('/api/users')
+    this.setState({ users: response.data })
+  }
   componentDidMount = async () => {
-    const response = await this.getPets()
-    console.log('response', response)
-    //axios
-    //set response
-
-    const allPetsResponse = response.data.petfinder.pets
-    const mappedPets = allPetsResponse.map(pet => {
-      return {
-        status: pet.status['$t'],
-        age: pet.age['$t'],
-        size: pet.size['$t'],
-        image_url: pet.media.photos.photo['$t'],
-        id: pet.id['$t'],
-        name: pet.name['$t'],
-        sex: pet.sex['$t'],
-        description: pet.description['$t'],
-        animal: pet.animal['$t'],
-        address: pet.contact.address1['$t'],
-        city: pet.contact.city['$t'],
-        zip: pet.contact.zip['$t'],
-        phone: pet.contact.phone
-
-      }
-    })
-
-    this.setState({ pets: mappedPets })
+    this.getUsers()
   }
-
+ 
   render() {
+    const userslist = this.state.users.map((user, i) => {
+      return (
+        <div key={i}>
+        <h4>{user.name}</h4>
+        <Link to={`/users/${user.id}`}><img src={user.image_url} alt={user.name} /></Link>
+        </div>
+      )
+    })
     return (
     <div>
-      <h1>Pets</h1>
-      {this.state.pets.name}
+      users
+      {userslist}
+      <UserPage 
+      id={this.state.users.id}
+      name={this.state.users.name}
+      location={this.state.users.location}
+      image_url={this.state.users.image_url}
+      />
     </div>
     )
   }
