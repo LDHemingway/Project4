@@ -27,14 +27,14 @@ export default class UserPage extends Component {
     pets: [
       {
         status: "",
-        age: "",
-        size: "",
+        // age: "",
+        // size: "",
         image_url: "",
         name: "",
-        sex: "",
-        id: "",
+        // sex: "",
+        // id: "",
         description: "",
-        animal: "",
+        // animal: "",
         address: "",
         city: "",
         state: "",
@@ -59,7 +59,6 @@ export default class UserPage extends Component {
 
 
   componentDidMount = async () => {
-    const response = await this.getPets()
     const user = await this.getUser()
     const allPetsResponse = response.data.petfinder.pets.pet
     let mappedPets = []

@@ -6,6 +6,18 @@ const StyledSearch = styled.div`
 `
 
 export default class SearchBar extends Component {
+  state = {
+    query: ''
+  }
+
+  handleChange =() => {
+    // modify state.query
+  }
+
+  onSubmit = () => {
+    // make request to your api at pets index
+    // carry location and animal parameters with request
+  }
   render() {
     return (
     <StyledSearch>
