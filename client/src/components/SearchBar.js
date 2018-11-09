@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import axios from 'axios';
 
 const StyledSearch = styled.div`
     width: 30vw;
@@ -10,25 +11,29 @@ const StyledSearch = styled.div`
 
 export default class SearchBar extends Component {
   state = {
-    locationquery: '',
-    animalquery: ''
+    location: '',
+    animal: ''
   }
 
   handleChange =(event) => {
-    this.setState({ locationquery: event.target.value, animalquery: event.target.value})
+    this.setState({ [event.target.name]: event.target.value})
   }
 
   onSubmit = (event) => {
-  event.preventDefault()
+    event.preventDefault()
+    axios.get('/api/pets',{
+      location: this.state.location,
+      animal: this.state.animal
+    })
   }
-  
+
   render() {
     return (
     <StyledSearch>
        
       <form onSubmit={this.handleSubmit}> 
-      <input type='text' value={this.state.locationquery} onChange={this.handleChange} placeholder='Zip Code'></input> 
-      <select onChange={this.handleChange} value={this.state.animalquery} name="animals" >
+      <input type='text' value={this.state.location} onChange={this.handleChange} placeholder='Zip Code'></input> 
+      <select onChange={this.handleChange} value={this.state.animal} name="animals" >
         <option value="cats">Cats</option>
         <option value="dogs">Dogs</option>
         <option value="rabbits">Rabbits</option>
