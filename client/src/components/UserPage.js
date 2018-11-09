@@ -59,6 +59,7 @@ export default class UserPage extends Component {
 
 
   componentDidMount = async () => {
+    const response = await this.getPets()
     const user = await this.getUser()
     const allPetsResponse = response.data.petfinder.pets.pet
     let mappedPets = []

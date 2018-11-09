@@ -3,29 +3,41 @@ import styled from 'styled-components'
 
 const StyledSearch = styled.div`
     width: 30vw;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
 `
 
 export default class SearchBar extends Component {
   state = {
-    query: ''
+    locationquery: '',
+    animalquery: ''
   }
 
-  handleChange =() => {
-    // modify state.query
+  handleChange =(event) => {
+    this.setState({ locationquery: event.target.value, animalquery: event.target.value})
   }
 
-  onSubmit = () => {
-    // make request to your api at pets index
-    // carry location and animal parameters with request
+  onSubmit = (event) => {
+  event.preventDefault()
   }
+  
   render() {
     return (
     <StyledSearch>
        
-       <input type='text' placeholder='City, State or Zip Code'></input> 
-
-       {/* <input type='radio' name='animal' value='Cat'> Cat </input>
-       <input type='radio'> </input> */}
+      <form onSubmit={this.handleSubmit}> 
+      <input type='text' value={this.state.locationquery} onChange={this.handleChange} placeholder='Zip Code'></input> 
+      <select onChange={this.handleChange} value={this.state.animalquery} name="animals" >
+        <option value="cats">Cats</option>
+        <option value="dogs">Dogs</option>
+        <option value="rabbits">Rabbits</option>
+        <option value="birds">Birds</option>
+        <option value="horses">Horses</option>
+      </select>
+      <input type='submit' value='Search' />
+      </form>
+   
     
 
       </StyledSearch>
