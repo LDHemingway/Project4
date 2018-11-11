@@ -12,7 +12,7 @@ class App extends Component {
         <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/users/:id' component={UserPage} />
-        <Route exact path='/users/:id/pets' component={FavoritesPage} />
+        <Route exact path='/users/:id/userspets' component={FavoritesPage} />
         </Switch>
       </Router>
     );
