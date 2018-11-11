@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import SearchBar from './SearchBar';
+import { Redirect } from 'react-router-dom'
 
 const StyledImage = styled.img`
   border-radius: 50%;
@@ -38,7 +39,9 @@ export default class UserPage extends Component {
       location: '',
       id: '',
       image_url: ''
-    }
+    },
+    showDelete: false,
+    redirect: false
   }
 
 
@@ -55,8 +58,21 @@ export default class UserPage extends Component {
   this.getUser()
   }
 
+  deletePost = async () => {
+    const userId = this.props.match.params.id
+    await axios.delete(`/api/users/${userId}`)
+    this.setState({ redirect: true })
+  }
+
+  showDelete = () => {
+    this.setState({ showDelete: !this.state.showDelete })
+  }
+
   render() {
     const userId = this.props.match.params.id
+    if (this.state.redirect) {
+      return <Redirect to={`/users/`} />
+    }
     return (
       <div>
         <StyledImageContainer>
@@ -67,7 +83,10 @@ export default class UserPage extends Component {
         <p>(Edit This User)</p>
         </StyledImageContainer>
         <SearchBar />
-        <p>Delete This User</p>
+
+
+        <button id='delete' onClick={this.showDelete}><i className="far fa-trash-alt"></i></button>
+        
       </div>
     )
   }
