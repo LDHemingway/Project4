@@ -13,16 +13,24 @@ const StyledForm = styled.div`
   justify-content: space-between;
 `
 
-const StyledUser = styled.div`
+const StyledUser = styled.span`
   width: 10vw;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  margin: 0 auto;
+  flex-wrap: wrap;
 `
 
 const StyledInput = styled.input`
   padding: 10px;
   margin: 10px;
   text-align: center;
+`
+const StyledImage = styled.img`
+  width: 30vw;
+  border-radius: 15%;
+  max-width: 275px;
 `
 
 
@@ -65,12 +73,12 @@ export default class Home extends Component {
   render() {
     const userslist = this.state.users.map((user, i) => {
       return (
-        <div key={i}>
+        <span key={i}>
         <StyledUser>
         <h4>{user.name}</h4>
-        <Link to={`/users/${user.id}`}><img src={user.image_url} alt={user.name} /></Link>
+        <Link to={`/users/${user.id}`}><StyledImage src={user.image_url} alt={user.name} /></Link>
         </StyledUser>
-        </div>
+        </span>
       )
     })
     return (
