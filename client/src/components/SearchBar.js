@@ -102,11 +102,11 @@ export default class SearchBar extends Component {
       <form onSubmit={this.onSubmit}> 
       <input type='text' name='location' value={this.state.location} onChange={this.handleChange} placeholder='Zip Code'></input> 
       <select onChange={this.handleChange} value={this.state.animal} name='animal'>
-        <option value="cats" onClick={this.handleChange} name="animal">Cats</option>
-        <option value="dogs" onClick={this.handleChange} name="animal">Dogs</option>
-        <option value="rabbits" onClick={this.handleChange} name="animal">Rabbits</option>
-        <option value="birds" onClick={this.handleChange} name="animal">Birds</option>
-        <option value="horses" onClick={this.handleChange} name="animal">Horses</option>
+        <option value="cat" onClick={this.handleChange} name="animal">Cats</option>
+        <option value="dog" onClick={this.handleChange} name="animal">Dogs</option>
+        <option value="rabbit" onClick={this.handleChange} name="animal">Rabbits</option>
+        <option value="bird" onClick={this.handleChange} name="animal">Birds</option>
+        <option value="horse" onClick={this.handleChange} name="animal">Horses</option>
       </select>
       <input type='submit' value='Search'/>
       </form>
