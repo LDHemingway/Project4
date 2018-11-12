@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -46,7 +46,8 @@ export default class Home extends Component {
       id: '',
       location: '',
       image_url: ''
-    }
+    },
+    redirect: false
   }
 
 
@@ -59,6 +60,7 @@ export default class Home extends Component {
   onSubmit = async (event) => {
     event.preventDefault()
     await axios.post('/api/users', this.state.newUser)
+    this.setState ({ redirect: true })
   }
 
 
@@ -71,6 +73,11 @@ export default class Home extends Component {
   }
  
   render() {
+    if (this.state.redirect) {
+      return (
+        <Redirect to={`/users/{this.props.match.params.id}`} />
+      )
+    }
     const userslist = this.state.users.map((user, i) => {
       return (
         <span key={i}>
