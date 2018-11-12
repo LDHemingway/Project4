@@ -25,6 +25,9 @@ const StyledImageContainer = styled.div`
     font-size: 5vw;
     color: rgb(100, 100, 100)
   }
+  .button:hover {
+    color: white;
+  }
 `
 
 const StyledLink = styled.a`
@@ -113,7 +116,8 @@ export default class UserPage extends Component {
       image_url: ''
     },
     showDelete: false,
-    redirect: false
+    redirect: false,
+    formShowing: false,
   }
 
 
@@ -124,7 +128,23 @@ export default class UserPage extends Component {
     return response.data
   }
 
+  handleChange = (event) => {
+    const user = {...this.state.user}
+    user[event.target.name] = event.target.value
+    this.setState({ user })
+}
+  
+  toggleFormShowing = () => {
+    const isShowing = !this.state.formShowing
+    this.setState({ formShowing: isShowing})
+  }
 
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    const userId = this.props.match.params.id
+    await axios.put(`/api/users/${userId}`, this.state.user)
+    this.getUser()
+  }
 
   componentDidMount = async () => {
   this.getUser()
@@ -153,7 +173,30 @@ export default class UserPage extends Component {
         <h5>{this.state.user.location}</h5>
         <StyledLink href={`/users/${userId}/userspets`} className="btn">View Your Favorite Pets</StyledLink>
         <p>(Edit This User)</p>
-        <a href="/" class="button"><i class="fas fa-home"></i></a>
+        <a href="/" class="button"><i className="fas fa-home"></i></a>
+
+        <div>
+        {this.state.formShowing ? null : <button onClick={this.toggleFormShowing}>Edit User</button>}
+        {this.state.formShowing ? 
+          <form onSubmit={this.handleSubmit} >
+            <div>
+              <input type='text' name='name' value={this.state.user.name} placeholder='Name'
+                onChange={this.handleChange}/>
+            </div>
+            <div>
+              <input type='text' name='location' value={this.state.user.location} placeholder='City, State'
+                onChange={this.handleChange}/>
+            </div>
+             <div>
+              <input type='text' name='image_url' value={this.state.user.image_url} placeholder='Image URL'
+                onChange={this.handleChange}/>
+            </div>
+            <div>
+              <input type='submit' value='Make Changes' onClick={this.toggleFormShowing}/>
+            </div>
+          </form> : null}
+        </div>
+
         </StyledImageContainer>
 
         <SearchBar />

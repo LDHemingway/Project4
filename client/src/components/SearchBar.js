@@ -14,7 +14,10 @@ const StyledMappedPets = styled.div`
   width: 80vw;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: 50px;
+`
+const StyledUserContainer = styled.div`
+  border: 5px;
 `
 export default class SearchBar extends Component {
   state = {
@@ -61,6 +64,7 @@ export default class SearchBar extends Component {
   render() {
    let mappedPets = this.state.searchresults.map((pet, i) => {
      return (
+       <StyledUserContainer>
       <div key={i}>
       Status: {pet.status.$t}
       <div>
@@ -92,6 +96,7 @@ export default class SearchBar extends Component {
       </div>
       <button>Add Me To Your Favorites!</button>
       </div>
+      </StyledUserContainer>
      )
    })
     return (
