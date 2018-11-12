@@ -19,6 +19,7 @@ const StyledImageContainer = styled.div`
   padding: 20px;
   width: 70%;
   margin: 0 auto;
+  margin-top: 20px;
   
   .button {
     text-decoration: none;
@@ -151,8 +152,7 @@ export default class UserPage extends Component {
   }
 
   deleteUser = async () => {
-    const userId = this.props.match.params.id
-    await axios.delete(`/api/users/${userId}`)
+    await axios.delete(`/api/users/${this.state.user.id}`)
     this.setState({ redirect: true })
   }
 
@@ -172,8 +172,7 @@ export default class UserPage extends Component {
         <h4>{this.state.user.name}</h4>
         <h5>{this.state.user.location}</h5>
         <StyledLink href={`/users/${userId}/userspets`} className="btn">View Your Favorite Pets</StyledLink>
-        <p>(Edit This User)</p>
-        <a href="/" class="button"><i className="fas fa-home"></i></a>
+        <a href="/" className="button"><i className="fas fa-home"></i></a>
 
         <div>
         {this.state.formShowing ? null : <button onClick={this.toggleFormShowing}>Edit User</button>}

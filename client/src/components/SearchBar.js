@@ -18,6 +18,7 @@ const StyledMappedPets = styled.div`
 `
 const StyledUserContainer = styled.div`
   border: 5px;
+  background: gray;
 `
 export default class SearchBar extends Component {
   state = {
@@ -42,6 +43,22 @@ export default class SearchBar extends Component {
           phone: ""
       }
     ],
+    savedPet: {
+      status: '',
+      age: '',
+      size: '',
+      image_url: '',
+      name: '',
+      sex: '',
+      id: '',
+      description: '',
+      animal: '',
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+      phone: ''
+    },
     mappedPets: []
   
   }
@@ -59,42 +76,52 @@ export default class SearchBar extends Component {
     console.log(this.state.searchresults)
   }
 
+  savePet = async (event) => {
+    event.preventDefault()
+    const savedPet = {...this.state.savedPet}
+    savedPet[event.target.name] = event.target.value
+    this.setState({ savedPet })
+    console.log(savedPet)
+  }
+
 
 
   render() {
    let mappedPets = this.state.searchresults.map((pet, i) => {
      return (
-       <StyledUserContainer>
+      <StyledUserContainer>
       <div key={i}>
+      <div name='status' value={pet.status.$t}>
       Status: {pet.status.$t}
-      <div>
+      </div>
+      <div name='age' value={pet.age.$t}>
       Age: {pet.age.$t}
       </div>
-      <div>
+      <div name='size' value={pet.size.$t}>
       Size: {pet.size.$t}
       </div>
-      <div>
+      <div name='name' value={pet.name.$t}>
       Name: {pet.name.$t}
       </div>
-      <div>
+      <div name='sex' value={pet.sex.$t}>
       Sex: {pet.sex.$t}
       </div>
-      <div>
+      <div name='description' value={pet.description.$t}>
       Description: {pet.description.$t}
       </div>
-      <div>
-      {pet.animal.$t}
+      <div name='animal' value={pet.animal.$t}>
+      Animal: {pet.animal.$t}
       </div>
-      <div>
-      {pet.contact.city.$t}
+      <div name='contact' value={pet.contact.city.$t}>
+      City: {pet.contact.city.$t}
       </div>
-      <div>
+      <div name='zipc' value={pet.contact.zip.$t}>
       Zip Code: {pet.contact.zip.$t}
       </div>
-      <div>
+      <div name='email' value={pet.contact.email.$t}>
       Contact Email: {pet.contact.email.$t}
       </div>
-      <button>Add Me To Your Favorites!</button>
+      <button onClick={this.savePet}>Add Me To Your Favorites!</button>
       </div>
       </StyledUserContainer>
      )

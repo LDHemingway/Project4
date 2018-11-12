@@ -87,6 +87,8 @@ const StyledImage = styled.img`
   width: 30vw;
   max-width: 275px;
   border-radius: 15px;
+  display: inline;
+  flex: 33.33%;
 
   :hover {
 
@@ -97,7 +99,8 @@ const StyledUserList = styled.div`
   background: white;
   margin: 0 auto;
   display: flex;
-  width: 50vw;
+  width: 70vw;
+  flex: 33.33%;
 `
 
 
