@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
   margin: 0 auto;
   margin-bottom: 20px;
   padding: 20px;
@@ -17,8 +17,6 @@ const StyledUser = styled.span`
   width: 10vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0 auto;
   flex-wrap: wrap;
 `
 
@@ -43,7 +41,7 @@ export default class Home extends Component {
       image_url: ''
     }],
 
-    newuser: {
+    newUser: {
       name: '',
       id: '',
       location: '',
@@ -53,12 +51,14 @@ export default class Home extends Component {
 
 
   handleChange = async (event) => {
-    this.setState({ [event.target.name]: event.target.value})
+    const newUser = {...this.state.newUser}
+    newUser[event.target.name] = event.target.value
+    this.setState({ newUser })
   }
 
   onSubmit = async (event) => {
     event.preventDefault()
-
+    await axios.post('/api/users', this.state.newUser)
   }
 
 
@@ -87,9 +87,9 @@ export default class Home extends Component {
       {userslist}
       OR Create New User
       <StyledForm onSubmit={this.onSubmit}>
-        <StyledInput type='text' placeholder='First Name' value={this.state.newuser.name} onChange={this.handleChange}/>
-        <StyledInput type="text" placeholder="City, State" value={this.state.newuser.location} onChange={this.handleChange}/>
-        <StyledInput type="text" placeholder="Image URL" value={this.state.newuser.image_url} onChange={this.handleChange}/>
+        <StyledInput type='text' name="name" placeholder='First Name' value={this.state.newUser.name} onChange={this.handleChange}/>
+        <StyledInput type="text" name="location" placeholder="City, State" value={this.state.newUser.location} onChange={this.handleChange}/>
+        <StyledInput type="text" name="image_url" placeholder="Image URL" value={this.state.newUser.image_url} onChange={this.handleChange}/>
         <StyledInput type="submit" value="Create New User" />
       </StyledForm>
     </div>

@@ -143,7 +143,7 @@ export default class UserPage extends Component {
   render() {
     const userId = this.props.match.params.id
     if (this.state.redirect) {
-      return <Redirect to={`/users/`} />
+      return <Redirect to={"/"} />
     }
     return (
       <div>
