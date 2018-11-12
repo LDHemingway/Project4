@@ -18,7 +18,9 @@ const StyledMappedPets = styled.div`
 `
 const StyledUserContainer = styled.div`
   border: 5px;
-  background: gray;
+  background: lightgray;
+  margin: 0 auto;
+  align-self: center;
 `
 export default class SearchBar extends Component {
   state = {
