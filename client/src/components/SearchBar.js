@@ -3,10 +3,39 @@ import styled from 'styled-components'
 import axios from 'axios';
 
 const StyledSearch = styled.div`
-    width: 30vw;
+    width: 60vw;
+    margin: 0 auto;
     margin-top: 20px;
     display: flex;
-    justify-content: space-around;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgb(100, 100, 100);
+    border-radius: 15px;
+
+    .search {
+      width: 30vw;
+      height: 4vh;
+      font-size: 20px;
+      font-weight: 200;
+      margin-right: 10px;
+    }
+
+    .dropdown {
+      width: 6vw;
+      height: 4vh;
+      font-size: 20px;
+      color: rgb(100, 100, 100);
+      margin-right: 10px;
+    }
+
+    .submit {
+      height: 4vh;
+      font-size: 20px;
+      margin-right: 10px;
+      color: rgb(100, 100, 100);
+    }
+
 `
 const StyledMappedPets = styled.div`
   display: flex;
@@ -75,7 +104,6 @@ export default class SearchBar extends Component {
     let animal = this.state.animal
     let results = await axios.get(`/api/pets?location=${location}&animal=${animal}`)
     this.setState({ searchresults: results.data.petfinder.pets.pet })
-    console.log('search results', this.state.searchresults[0].media.photos.photo[2].$t)
   }
 
   savePet = async (event) => {
@@ -94,8 +122,8 @@ export default class SearchBar extends Component {
         <StyledUserContainer>
           <div key={i}>
           {pet.media.photos ? 
-            <img src={pet.media.photos.photo[1].$t}/> : 
-            <img src='www.placecage.com/'/> }
+            <img src={pet.media.photos.photo[2].$t} alt={pet.name}/> : 
+            <img src='www.placecage.com/' alt="no_pet_image"/> }
             <div name='status' value={pet.status.$t}>
               Status: {pet.status.$t}
             </div>
@@ -137,15 +165,15 @@ export default class SearchBar extends Component {
         <StyledSearch>
 
           <form onSubmit={this.onSubmit}>
-            <input type='text' name='location' value={this.state.location} onChange={this.handleChange} placeholder='Zip Code'></input>
-            <select onChange={this.handleChange} value={this.state.animal} name='animal'>
+            <input className="search" type='text' name='location' value={this.state.location} onChange={this.handleChange} placeholder='City, State or Zip Code'></input>
+            <select className="dropdown" onChange={this.handleChange} value={this.state.animal} name='animal'>
               <option value="cat" onClick={this.handleChange} name="animal">Cats</option>
               <option value="dog" onClick={this.handleChange} name="animal">Dogs</option>
               <option value="rabbit" onClick={this.handleChange} name="animal">Rabbits</option>
               <option value="bird" onClick={this.handleChange} name="animal">Birds</option>
               <option value="horse" onClick={this.handleChange} name="animal">Horses</option>
             </select>
-            <input type='submit' value='Search' />
+            <input className="submit" type='submit' value='Search' />
           </form>
         </StyledSearch>
         <StyledMappedPets>

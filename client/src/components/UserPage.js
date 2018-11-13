@@ -3,6 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import SearchBar from './SearchBar';
 import { Redirect } from 'react-router-dom'
+import NavBar from '../sharedcomponents.js/NavBar';
 
 const StyledImage = styled.img`
   border-radius: 50%;
@@ -167,6 +168,7 @@ export default class UserPage extends Component {
     }
     return (
       <div>
+        <NavBar />
         <StyledImageContainer>
         <StyledImage src={this.state.user.image_url} alt={this.state.user.name}/>
         <h4>{this.state.user.name}</h4>
