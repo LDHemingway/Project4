@@ -142,15 +142,17 @@ const StyledText = styled.div`
 `
 
 const StyledUserList = styled.div`
-  background: white;
+  background: lightgray;
+  border-radius: 15px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: center;
   width: 30vw;
   flex: 33.33%;
-  padding: 20px;
+  padding: 70px;
+  margin-bottom: 100px;
 `
 
 
@@ -202,7 +204,6 @@ export default class Home extends Component {
     }
     const userslist = this.state.users.map((user, i) => {
       return (
-        <StyledUserList>
         <span key={i}>
         <StyledUser>
         <StyledDivContainer>
@@ -214,7 +215,7 @@ export default class Home extends Component {
         </StyledDivContainer>
         </StyledUser>
         </span>
-        </StyledUserList>
+      
       )
     })
     return (
