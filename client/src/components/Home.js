@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import NavBar from "../sharedcomponents.js/NavBar";
 import About from "./About";
 import ScrollableAnchor from 'react-scrollable-anchor'
+import Footer from "./Footer";
 
 const StyledNav = styled.div`
     width: 100%;
@@ -236,7 +237,7 @@ export default class Home extends Component {
       <StyledUserList>
       {userslist}
       </StyledUserList>
-
+      <Footer />
     </div>
     )
   }
