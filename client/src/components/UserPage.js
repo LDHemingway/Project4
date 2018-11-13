@@ -154,7 +154,8 @@ export default class UserPage extends Component {
   }
 
   deleteUser = async () => {
-    await axios.delete(`/api/users/${this.state.user.id}`)
+    const userId = this.props.match.params.id
+    await axios.delete(`/api/users/${userId}`)
     this.setState({ redirect: true })
   }
 
