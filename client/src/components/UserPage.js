@@ -18,9 +18,10 @@ const StyledImageContainer = styled.div`
   align-items: center;
   background: lightgray;
   padding: 20px;
-  width: 70%;
+  width: 60vw;
   margin: 0 auto;
   margin-top: 20px;
+  box-shadow: 5px 7px darkgray;
   
   .button {
     text-decoration: none;

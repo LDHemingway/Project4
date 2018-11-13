@@ -37,6 +37,11 @@ const StyledSearch = styled.div`
     }
 
 `
+
+const StyledImage = styled.img`
+    width: 20vw;
+    border: 1px solid rgb(100, 100, 100);
+`
 const StyledMappedPets = styled.div`
   display: flex;
   align-content: space-between;
@@ -44,12 +49,18 @@ const StyledMappedPets = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 50px;
+  margin: 10px;
 `
 const StyledUserContainer = styled.div`
   border: 5px;
   background: lightgray;
-  margin: 0 auto;
   align-self: center;
+  width: 50vw;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 15px;
 `
 export default class SearchBar extends Component {
   state = {
@@ -122,8 +133,8 @@ export default class SearchBar extends Component {
         <StyledUserContainer>
           <div key={i}>
           {pet.media.photos ? 
-            <img src={pet.media.photos.photo[2].$t} alt={pet.name}/> : 
-            <img src='www.placecage.com/' alt="no_pet_image"/> }
+            <StyledImage src={pet.media.photos.photo[2].$t} alt={pet.name}/> : 
+            <StyledImage src='www.placecage.com/' alt="no_pet_image"/> }
             <div name='status' value={pet.status.$t}>
               Status: {pet.status.$t}
             </div>
