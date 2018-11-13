@@ -4,6 +4,41 @@ import axios from 'axios'
 import styled from 'styled-components'
 import NavBar from "../sharedcomponents.js/NavBar";
 import About from "./About";
+import ScrollableAnchor from 'react-scrollable-anchor'
+
+const StyledNav = styled.div`
+    width: 100%;
+    height: 70px;
+    background: lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-content: space-between;
+    border-bottom: 1px solid darkgray;
+    
+
+    p {
+      color: black;
+      font-size: 35px;
+      font-weight: 200;
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+      margin-top: 10px;
+      font-family: 'Raleway', sans-serif;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-decoration: none;
+    }
+    img {
+      width: 7vw;
+      
+    }
+
+    a {
+      text-decoration: none;
+    }
+`
+
 
 const StyledForm = styled.form`
   margin: 0 auto;
@@ -177,10 +212,13 @@ export default class Home extends Component {
     })
     return (
     <div>
-      <NavBar />
+      <StyledNav>
+        <a href='/'><p>Fur Babies</p></a>
+        <a href='#section1'>Log In</a>
+      </StyledNav>
       <About />
       <StyledFormContainer>
-        <h4>Join the family!</h4>
+        <h4 id={'section1'}>Join the family!</h4>
       <StyledForm onSubmit={this.onSubmit}>
         <StyledInput type='text' name="name" placeholder='First Name' value={this.state.newUser.name} onChange={this.handleChange}/>
         <StyledInput type="text" name="location" placeholder="City, State" value={this.state.newUser.location} onChange={this.handleChange}/>

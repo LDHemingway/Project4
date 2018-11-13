@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import ScrollableAnchor from 'react-scrollable-anchor'
 
 const StyledNav = styled.div`
     width: 100%;
