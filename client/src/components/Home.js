@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import NavBar from "../sharedcomponents.js/NavBar";
+import About from "./About";
 
 const StyledForm = styled.form`
   margin: 0 auto;
@@ -33,7 +34,7 @@ const StyledFormContainer = styled.div`
 `
 const StyledDivContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 100vw;
 
   .image {
     display: block;
@@ -50,7 +51,7 @@ const StyledDivContainer = styled.div`
     height: 100%;
     width: 100%;
     opacity: 0;
-    transition: .3s ease;
+    transition: .5s ease;
     background-color: darkgray;
     border-radius: 15px;
   }
@@ -61,7 +62,7 @@ const StyledDivContainer = styled.div`
 
   .text {
     color: white;
-    font-size: 4em;
+    font-size: 4vw;
     font-weight: 600;
     position: absolute;
     top: 50%;
@@ -75,6 +76,9 @@ const StyledDivContainer = styled.div`
 
 const StyledUser = styled.span`
   width: 10vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   flex: 33.33%;
 `
 
@@ -84,23 +88,27 @@ const StyledInput = styled.input`
   text-align: center;
 `
 const StyledImage = styled.img`
-  width: 30vw;
+  width: 25vw;
   max-width: 275px;
   border-radius: 15px;
-  display: inline;
   flex: 33.33%;
-
-  :hover {
-
-  }
+`
+const StyledText = styled.div`
+  text-align: center;
+  background: white;
+  padding: 10px;
 `
 
 const StyledUserList = styled.div`
   background: white;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   width: 70vw;
   flex: 33.33%;
+  padding: 20px;
 `
 
 
@@ -170,10 +178,13 @@ export default class Home extends Component {
     return (
     <div>
       <NavBar />
-      Select From List of Users
+      <About />
+      <StyledText>Select From List of Users</StyledText>
+      <StyledUserList>
       {userslist}
+      </StyledUserList>
       <StyledFormContainer>
-        <h4>Create New User</h4>
+        <h4>Join the family!</h4>
       <StyledForm onSubmit={this.onSubmit}>
         <StyledInput type='text' name="name" placeholder='First Name' value={this.state.newUser.name} onChange={this.handleChange}/>
         <StyledInput type="text" name="location" placeholder="City, State" value={this.state.newUser.location} onChange={this.handleChange}/>
