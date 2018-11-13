@@ -179,10 +179,6 @@ export default class Home extends Component {
     <div>
       <NavBar />
       <About />
-      <StyledText>Select From List of Users</StyledText>
-      <StyledUserList>
-      {userslist}
-      </StyledUserList>
       <StyledFormContainer>
         <h4>Join the family!</h4>
       <StyledForm onSubmit={this.onSubmit}>
@@ -192,6 +188,11 @@ export default class Home extends Component {
         <StyledInput type="submit" value="Create New User" />
       </StyledForm>
       </StyledFormContainer>
+      <StyledText>Select From List of Users</StyledText>
+      <StyledUserList>
+      {userslist}
+      </StyledUserList>
+
     </div>
     )
   }

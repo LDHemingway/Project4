@@ -9,6 +9,7 @@ const StyledNav = styled.div`
     flex-direction: row;
     justify-content: center;
     align-content: space-between;
+    border-bottom: 1px solid darkgray;
     
 
     p {
@@ -21,10 +22,15 @@ const StyledNav = styled.div`
       font-family: 'Raleway', sans-serif;
       padding-left: 20px;
       padding-right: 20px;
+      text-decoration: none;
     }
     img {
       width: 7vw;
       
+    }
+
+    a {
+      text-decoration: none;
     }
 `
 
@@ -33,7 +39,7 @@ export default class navbar extends Component {
     return (
       <StyledNav>
         <img src='https://melbournechapter.net/images/phan-transparent-cat-whisker-3.png' alt='whisker' />
-        <p>Fur Babies</p>
+        <a href='/'><p>Fur Babies</p></a>
         <img src='https://melbournechapter.net/images/phan-transparent-cat-whisker-3.png' alt='whisker' />
       </StyledNav>
     )
