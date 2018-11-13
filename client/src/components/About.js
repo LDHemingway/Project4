@@ -32,10 +32,10 @@ export default class About extends Component {
   render() {
     return (
     <StyledAbout>
-    <div class="container">
+    <div className="container">
       <img src='https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8cfec93c89f00ae9bbc2e96a0e4bbd01&auto=format&fit=crop&w=1150&q=80' alt='pets' />
-      <div class="text">Support local animal shelters while finding your next furry companion.</div>
-      <i class="fas fa-arrow-down" id="icon"></i>
+      <div className="text">Support local animal shelters while finding your next furry companion.</div>
+      <i className="fas fa-arrow-down" id="icon"></i>
     </div>
     </StyledAbout>
     )

@@ -35,11 +35,12 @@ const StyledNav = styled.div`
 
     #furbabies {
       font-size: 35px;
+      padding-top: 10px;
     }
 
     #login {
       font-size: 20px;
-      padding-top: 10px;
+      padding-top: 23px;
     }
 `
 
@@ -59,6 +60,7 @@ const StyledFormContainer = styled.div`
   width: 40vw;
   margin: 0 auto;
   border-radius: 15px;
+  margin-bottom: 10px;
 
   h4 {
     text-align: center;
@@ -101,7 +103,7 @@ const StyledDivContainer = styled.div`
 
   .text {
     color: white;
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: 600;
     position: absolute;
     top: 50%;
@@ -145,7 +147,7 @@ const StyledUserList = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  width: 70vw;
+  width: 30vw;
   flex: 33.33%;
   padding: 20px;
 `
@@ -203,9 +205,9 @@ export default class Home extends Component {
         <span key={i}>
         <StyledUser>
         <StyledDivContainer>
-        <Link to={`/users/${user.id}`}><StyledImage src={user.image_url} alt={user.name} class="image"/>
-        <div class="overlay">
-          <div class="text">{user.name}</div>
+        <Link to={`/users/${user.id}`}><StyledImage src={user.image_url} alt={user.name} className="image"/>
+        <div className="overlay">
+          <div className="text">{user.name}</div>
         </div>
         </Link>
         </StyledDivContainer>
