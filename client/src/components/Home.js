@@ -12,14 +12,13 @@ const StyledNav = styled.div`
     background: lightgray;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
     align-content: space-between;
     border-bottom: 1px solid darkgray;
     
 
     p {
       color: black;
-      font-size: 35px;
       font-weight: 200;
       letter-spacing: 0.2em;
       text-transform: lowercase;
@@ -29,13 +28,18 @@ const StyledNav = styled.div`
       padding-right: 20px;
       text-decoration: none;
     }
-    img {
-      width: 7vw;
-      
-    }
 
     a {
       text-decoration: none;
+    }
+
+    #furbabies {
+      font-size: 35px;
+    }
+
+    #login {
+      font-size: 20px;
+      padding-top: 10px;
     }
 `
 
@@ -213,8 +217,8 @@ export default class Home extends Component {
     return (
     <div>
       <StyledNav>
-        <a href='/'><p>Fur Babies</p></a>
-        <a href='#section1'>Log In</a>
+        <a href='/' id='furbabies'><p>Fur Babies</p></a>
+        <a href='#section1' id='login'><p>Log In</p></a>
       </StyledNav>
       <About />
       <StyledFormContainer>
