@@ -7,7 +7,7 @@ const StyledNav = styled.div`
     background: lightgray;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-content: space-between;
     border-bottom: 1px solid darkgray;
     
@@ -38,9 +38,7 @@ export default class navbar extends Component {
   render() {
     return (
       <StyledNav>
-        <img src='https://melbournechapter.net/images/phan-transparent-cat-whisker-3.png' alt='whisker' />
         <a href='/'><p>Fur Babies</p></a>
-        <img src='https://melbournechapter.net/images/phan-transparent-cat-whisker-3.png' alt='whisker' />
       </StyledNav>
     )
   }
