@@ -22,7 +22,7 @@ Fur Babies is an app where users can search for animals by a city and state or z
 
 [Wire Frame](https://imgur.com/a/MInb3hI)
 
-[Heroku](Fur-babies.herokuapp.com)
+[Heroku](https://fur-babies.herokuapp.com/)
 
 ## Shout Outs
 
